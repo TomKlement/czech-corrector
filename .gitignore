@@ -1,0 +1,13 @@
+# Next.js build
+.next
+
+# Node.js modules
+node_modules/
+
+# Sensitive data
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
