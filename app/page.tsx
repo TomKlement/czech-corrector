@@ -1,8 +1,4 @@
-import Image from "next/image";
 import Corrector from "@/components/Corrector";
-
-
-
 
 export default function Home() {
   return (
