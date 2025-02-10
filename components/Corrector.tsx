@@ -12,6 +12,7 @@ export default function Corrector() {
     try {
 
         const response = await axios.post("/api/correct-text", {text})
+        console.log(response.data); 
         setcorrectedText(response.data.correctedText)
 
         } catch(error) {
