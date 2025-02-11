@@ -7,16 +7,25 @@ export default function Corrector() {
   const[text, setText] = useState<string>("");
   const[correctedText, setcorrectedText] = useState<string>("");
   const[copied, setCopied] = useState<boolean>(false);
+  const[errorMessage, setErrorMessage] = useState<string>("")
 
   const clickHandle = async () => {
     try {
 
+        setErrorMessage("");
         const response = await axios.post("/api/correct-text", {text})
-        console.log(response.data); 
         setcorrectedText(response.data.correctedText)
 
-        } catch(error) {
+        } catch(error: any) {
+
           console.error("Chyba při odesílání požadavku:", error);
+
+          if (error.response?.data?.error) {
+            setErrorMessage(error.response.data.error);
+          } else {
+            setErrorMessage("Došlo k chybě při komunikaci se serverem.");
+          }
+
         }
   }
 
@@ -41,7 +50,13 @@ export default function Corrector() {
         onKeyDown={(e) => { if (e.key === "Enter") clickHandle(); }}
       />
       <button className="font-light w-full p-2 bg-green-kelp-500 text-white rounded-md mb-4 hover:bg-green-kelp-600 transition duration-300" onClick={clickHandle}>Opravit</button>
-
+      
+      {errorMessage && (
+        <div className="mb-2 text-red-500 text-sm">
+          {errorMessage}
+        </div>
+      )}
+      
         <div>
           <textarea className="font-light italic h-32 w-full p-5 bg-white text-green-kelp-950 rounded-md mb-2 resize-none text-left align-top text-sm focus:outline-none"
             value={correctedText}
