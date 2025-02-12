@@ -15,7 +15,8 @@ export default function Corrector() {
         setErrorMessage("");
         const response = await axios.post("/api/correct-text", {text})
         setcorrectedText(response.data.correctedText)
-
+        
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch(error: any) {
 
           console.error("Chyba při odesílání požadavku:", error);

@@ -47,6 +47,8 @@ export async function POST(request: Request) {
           );
           
           return NextResponse.json({ correctedText: response.data.choices[0].message.content });
+          
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.error("Chyba při volání OpenAI API:", error.response?.data?.error || error);
             throw new Error("Chyba při zpracování textu.");
