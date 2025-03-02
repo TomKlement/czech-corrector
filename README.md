@@ -34,5 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 # Czech Corrector 📝
 
 Aplikace pro opravu českých textů pomocí OpenAI.
+Application for correcting Czech texts using OpenAI.
 
 🔗 **Vyzkoušejte online**: [czech-corrector.vercel.app](https://czech-corrector.vercel.app/)
+🔗 **Try online**: [czech-corrector.vercel.app](https://czech-corrector.vercel.app/)
